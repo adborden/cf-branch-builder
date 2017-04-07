@@ -48,8 +48,8 @@ module.exports = [
         },
         {
           test: /\.jsx?$/,
-          loader: 'eslint-loader',
           exclude: /node_modules/,
+          loader: 'eslint-loader',
         },
       ],
     },
@@ -60,10 +60,14 @@ module.exports = [
   {
     name: 'server-js',
     target: 'node',
-    entry: path.join(__dirname, 'index.js'),
+    entry: path.join(__dirname, 'server.js'),
     output: {
       path: path.join(__dirname, 'dist'),
       filename: 'server.js',
+    },
+    node: {
+      __dirname: false,
+      __filename: false,
     },
     externals: [nodeExternals()],
     plugins: [
